@@ -33,13 +33,15 @@ body {
 
 .text-box {
   padding-top: 0;
+  font-size: 20px;
+  height: 1.5em;
   width: 99%;
 }
 
 .list-container {
   width: 25%;
   height: 100%;
-  padding-top: 1em;
+
   background: #808080FF;
 }
 
