@@ -7,7 +7,8 @@ body {
   margin-left: 25%;
 }
 
-.list-container {
+.filter-container {
+  /*border: solid 3px red;*/
   position: absolute;
   background: #180AF4FF;
   font-size: 25px;
@@ -15,7 +16,7 @@ body {
   height: 3em;
 }
 
-.list-container h1 {
+.filter-container h1 {
   margin: 0;
   text-align: center;
 }
