@@ -39,5 +39,13 @@ body {
 .list-container {
   width: 25%;
   height: 100%;
+  padding-top: 1em;
   background: #808080FF;
+}
+
+.list-results {
+  font-size: 20px;
+  padding-left: 0.5em;
+  line-height: 2.2em;
+  list-style: none;
 }
