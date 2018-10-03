@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css'
 import MapContainer from "./components/Map";
-import ListView from "./components/ListView"
+import LocationFilter from "./components/LocationFilter"
+import ListView from "./components/ListView";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 class App extends Component {
@@ -9,7 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <MapContainer />
-        <ListView />
+        <LocationFilter />
       </div>
     );
   }
