@@ -5,8 +5,7 @@ class LocationFilter extends Component  {
 		return(
 			<div className="filter-container">
 				<h1>Placeholder</h1>
-				<input className="text-box" type="text" placeholder="Search">
-      	</input>	
+					
 			</div>
 		)
 	}
