@@ -9,7 +9,7 @@ body {
 
 .list-container {
   position: absolute;
-  background: #0051FF87;
+  background: #180AF4FF;
   font-size: 25px;
   width: 25%;
   height: 3em;
@@ -22,5 +22,5 @@ body {
 
 .text-box {
   padding-top: 0;
-  width: 100%;
+  width: 99%;
 }
