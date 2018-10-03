@@ -10,7 +10,7 @@ body {
 .filter-container {
   /*border: solid 3px red;*/
   padding-bottom: 5px;
-  position: absolute;
+  position: static;
   background: #180AF4FF;
   font-size: 25px;
   width: 25%;
