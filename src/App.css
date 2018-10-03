@@ -10,7 +10,6 @@ body {
 .filter-container {
   /*border: solid 3px red;*/
   padding-bottom: 5px;
-  position: static;
   background: #180AF4FF;
   font-size: 25px;
   width: 25%;
@@ -28,8 +27,6 @@ body {
 }
 
 .list-container {
-  position: absolute;
-  margin-top: 6.3em;
   width: 25%;
   height: 100%;
   background: #808080FF;
