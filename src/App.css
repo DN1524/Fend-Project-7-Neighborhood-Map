@@ -16,14 +16,14 @@ body {
 .navbar {
   /*border: solid 3px red;*/
   padding-bottom: 5px;
-  background: #180AF4FF;
+  background: #4889B6FF;
   font-size: 25px;
   width: 100%;
   height: 3em;
 }
 
 .navbar h1 {
-  padding-top: 10px;
+  padding-top: 15px;
   margin: 0;
 }
 
