@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class ListView extends Component  {
 	render() {
 		return(
-			<div className="list-container">
+			<div className="sidebar">
 				<input className="text-box" type="text" placeholder="Search">
       	</input>
       	<div className="results-container">
