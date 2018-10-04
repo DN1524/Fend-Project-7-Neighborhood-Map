@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css'
 import MapContainer from "./components/Map";
-import LocationFilter from "./components/LocationFilter"
-import ListView from "./components/ListView";
+import NavBar from "./components/NavBar"
+import SideBar from "./components/SideBar";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 class App extends Component {
@@ -14,8 +14,8 @@ class App extends Component {
     return (
       <div className="App" style={style}>
         <MapContainer />
-        <LocationFilter />
-        <ListView />
+        <NavBar />
+        <SideBar />
       </div>
     );
   }
