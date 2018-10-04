@@ -7,7 +7,10 @@ class NavBar extends Component  {
 			<nav className="navbar">
 				<h1>PlaceHolder</h1>
 				<div className="hamburger-container">
-					<HamburgerMenu/>
+					<HamburgerMenu
+						strokeWidth={4}
+						height={22}
+					/>
 				</div>
 			</nav>
 		)
