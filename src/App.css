@@ -19,7 +19,7 @@ body {
   padding-bottom: 5px;
   background: #4889B666;
   font-size: 25px;
-  width: 350px;
+  width: 351px;
   max-width: 100%;
   height: 3em;
 }
@@ -50,7 +50,7 @@ body {
 .sidebar {
   position: absolute;
   margin-top: 5em;
-  width: 350px;
+  width: 351px;
   max-width: 100%;
   height: 91.5%;
   overflow: auto;
