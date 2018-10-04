@@ -47,7 +47,14 @@ body {
 
 .list-results {
   font-size: 20px;
-  padding-left: 0.5em;
+  padding-left: 0;
   line-height: 2.2em;
   list-style: none;
+}
+
+.list-results li {
+  padding-left: 0.5em;
+  margin-bottom: 3px;
+  color: #A3A3A3FF;
+  background: #2B2B2BFF;
 }
