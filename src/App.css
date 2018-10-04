@@ -13,11 +13,6 @@ body {
   width: 100%;
 }
 
-.map {
-  position: fixed;
-  margin-left: 25%;
-}
-
 .filter-container {
   /*border: solid 3px red;*/
   padding-bottom: 5px;
