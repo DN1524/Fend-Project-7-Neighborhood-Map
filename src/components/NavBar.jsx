@@ -6,7 +6,9 @@ class NavBar extends Component  {
 		return(
 			<nav className="navbar">
 				<h1>PlaceHolder</h1>
-				<HamburgerMenu className="hamburger" />
+				<div className="hamburger-container">
+					<HamburgerMenu/>
+				</div>
 			</nav>
 		)
 	}
