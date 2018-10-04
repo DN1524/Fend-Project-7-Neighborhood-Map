@@ -6,7 +6,7 @@ class ListView extends Component  {
 			<div className="list-container">
 				<input className="text-box" type="text" placeholder="Search">
       	</input>
-      	<div>
+      	<div className="results-container">
 					<ul className="list-results">
 						<li>Some Text</li>
 						<li>Some Text</li>
