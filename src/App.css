@@ -13,9 +13,9 @@ body {
   width: 100%;
 }
 
-.map {
+/*.map {
   margin-left: 25%;
-}
+}*/
 
 .filter-container {
   /*border: solid 3px red;*/
@@ -57,4 +57,9 @@ body {
   margin-bottom: 3px;
   color: #A3A3A3FF;
   background: #2B2B2BFF;
+}
+
+.results-container {
+  height: 95.9%;
+  overflow: auto;
 }
