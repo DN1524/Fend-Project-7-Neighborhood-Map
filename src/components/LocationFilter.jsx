@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 class LocationFilter extends Component  {
 	render() {
 		return(
-			<div className="filter-container">
+			<nav className="filter-container">
 				<h1>PlaceHolder</h1>	
-			</div>
+			</nav>
 		)
 	}
 }
