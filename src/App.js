@@ -7,12 +7,8 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 class App extends Component {
   render() {
-    const style = {
-      height: "91.3%"
-    }
-
     return (
-      <div className="App" style={style}>
+      <div className="App">
         <MapContainer />
         <NavBar />
         <SideBar />
