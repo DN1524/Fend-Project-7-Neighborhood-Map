@@ -20,7 +20,6 @@ export class MapContainer extends Component  {
 					lng: -87.629798
 				}}
 				>
-				{console.log(this.props.google)}
 			</Map>
 		);
 	}
