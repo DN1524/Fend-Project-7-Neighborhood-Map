@@ -9,9 +9,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <MapContainer /> {/*Will move later*/}
         <NavBar />
-        
       </div>
     );
   }
