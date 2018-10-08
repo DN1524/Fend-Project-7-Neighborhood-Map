@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import SideBar from "./SideBar"
+import NavBar from "./NavBar"
 
 class HomePage extends Component {
 	render() {
 		return(
-			<SideBar />
+			<NavBar />
 		)
 	}
 }
