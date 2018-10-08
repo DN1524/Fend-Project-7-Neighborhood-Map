@@ -22,6 +22,7 @@ body {
   width: 351px;
   max-width: 100%;
   height: 3em;
+  z-index: 1;  
 }
 
 .navbar:hover {
@@ -55,6 +56,7 @@ body {
   height: 91.5%;
   overflow: auto;
   background: #808080FF;
+  z-index: 1;
 }
 
 .list-results {
