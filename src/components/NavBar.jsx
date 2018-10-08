@@ -14,19 +14,20 @@ class NavBar extends Component  {
 	render() {
 		console.log(this.props)
 		return(
-			<nav className="navbar">
-				<h1>PlaceHolder</h1>
-				<div className="hamburger-container">
-					<HamburgerMenu
-						isOpen={this.state.open}
-						menuClicked={this.handleClick.bind(this)}
-						strokeWidth={4}
-						height={22}
-					/>
-				</div>
-
+			<div className="ui-container">
+				<nav className="navbar">
+					<h1>PlaceHolder</h1>
+					<div className="hamburger-container">
+						<HamburgerMenu
+							isOpen={this.state.open}
+							menuClicked={this.handleClick.bind(this)}
+							strokeWidth={4}
+							height={22}
+						/>
+					</div>
+				</nav>
 				<SideBar />
-			</nav>
+			</div>
 		)
 	}
 }
