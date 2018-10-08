@@ -9,9 +9,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <MapContainer />
+        <MapContainer /> {/*Will move later*/}
         <NavBar />
-        <SideBar />
+        
       </div>
     );
   }
