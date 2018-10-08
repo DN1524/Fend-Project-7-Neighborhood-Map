@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import HamburgerMenu from 'react-hamburger-menu';
+import SideBar from "./SideBar"
 
 class NavBar extends Component  {
 	state = {
@@ -23,6 +24,8 @@ class NavBar extends Component  {
 						height={22}
 					/>
 				</div>
+
+				<SideBar />
 			</nav>
 		)
 	}
