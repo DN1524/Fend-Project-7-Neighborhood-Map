@@ -8,7 +8,9 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 class App extends Component {
   render() {
 
-
+    componentDidMount() {
+      this.renderMap();
+    }
 
     initMap = () => {
       const map = new window.google.maps.Map(document.getElementById('map'), {
@@ -23,15 +25,13 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
+      <main>
         <div id="map"></div>
-
-        <NavBar />
-      </div>
+      </main>
     );
   }
 }
-
+// <NavBar />
 function loadScript(url) {
   const index = window.document.getElementByTagName("script")[0];
   const script = window.document.createElement("script");
