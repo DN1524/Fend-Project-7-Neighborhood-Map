@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 import HamburgerMenu from 'react-hamburger-menu';
-import SideBar from "./SideBar"
+import SideBar from "./SideBar";
+import $ from 'jquery';
 
 class NavBar extends Component  {
 	state = {
     open: true
   }
-
+  // syncs the boolean of this.state and the burgerMenu.
   handleClick = () => {
   	this.setState({open: this.state.open ? false : true})
+  	if (this.state.open === false) {
+  		$(".sidebar").removeClass("hidden");
+  	} else {
+  		$(".sidebar").addClass("hidden");
+  	}
   }
-
 	render() {
 		console.log(this.props)
 		return(
@@ -26,7 +31,7 @@ class NavBar extends Component  {
 						/>
 					</div>
 				</nav>
-				<SideBar />
+				<SideBar state={this.state}/>
 			</div>
 		)
 	}
