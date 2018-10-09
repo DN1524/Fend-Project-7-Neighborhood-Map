@@ -32,7 +32,7 @@ class App extends Component {
 }
 // <NavBar />
 function loadScript(url) {
-  const index = window.document.getElementByTagName("script")[0];
+  const index = window.document.getElementsByTagName("script")[0];
   const script = window.document.createElement("script");
   script.src = url;
   script.async = true;
