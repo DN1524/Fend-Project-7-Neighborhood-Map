@@ -6,24 +6,23 @@ import SideBar from "./components/SideBar";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 class App extends Component {
+  componentDidMount() {
+    this.renderMap()
+  }
+
+  initMap = () => {
+    const map = new window.google.maps.Map(document.getElementById("map"), {
+      center: {lat: 41.878114, lng: -87.629798},
+      zoom: 10
+    });
+  }
+
+  renderMap = () => {
+    loadScript("https:maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=MYAPIKEY&v=3&callback=initMap")
+    window.initMap = this.initMap
+  }
+
   render() {
-
-    componentDidMount() {
-      this.renderMap();
-    }
-
-    initMap = () => {
-      const map = new window.google.maps.Map(document.getElementById('map'), {
-        center: {lat: 41.878114, lng: -87.629798},
-        zoom: 10
-      });
-    }
-
-    renderMap = () => {
-      loadScript("https:maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=MYAPIKEY&v=3&callback=initMap")
-      window.initMap = this.initMap
-    }
-
     return (
       <main>
         <div id="map"></div>
