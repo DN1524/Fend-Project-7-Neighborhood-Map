@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   renderMap = () => {
-    loadScript("https:maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=MYAPIKEY&v=3&callback=initMap")
+    loadScript("https:maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=&v=3&callback=initMap")
     window.initMap = this.initMap
   }
 
