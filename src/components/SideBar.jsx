@@ -16,8 +16,6 @@ class SideBar extends Component  {
 						</ul>
 					</div>
 				</section>
-
-				<MapContainer />
 			</div>
 		)
 	}
