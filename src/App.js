@@ -25,4 +25,13 @@ class App extends Component {
   }
 }
 
+function loadScript(url) {
+  const index = window.document.getElementByTagName("script")[0];
+  const script = window.document.createElement("script");
+  script.src = url;
+  script.async = true;
+  script.defer = true;
+  index.parentNode.insertBefore(script, index);
+}
+
 export default App;
