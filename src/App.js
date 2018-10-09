@@ -13,6 +13,7 @@ class App extends Component {
         center: {lat: 41.878114, lng: -87.629798},
         zoom: 10
       });
+    }
 
     return (
       <div className="App">
