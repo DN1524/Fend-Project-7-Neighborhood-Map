@@ -26,11 +26,12 @@ class App extends Component {
     return (
       <main>
         <div id="map"></div>
+
+        <NavBar />
       </main>
     );
   }
 }
-// <NavBar />
 function loadScript(url) {
   const index = window.document.getElementsByTagName("script")[0];
   const script = window.document.createElement("script");
