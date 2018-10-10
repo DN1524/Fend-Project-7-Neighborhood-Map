@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import './App.css'
-import NavBar from "./components/NavBar"
+import './App.css';
+import NavBar from "./components/NavBar";
+import axios from "axios";
 
 class App extends Component {
   componentDidMount() {
