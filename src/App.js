@@ -4,6 +4,10 @@ import NavBar from "./components/NavBar";
 import axios from "axios";
 
 class App extends Component {
+  state = {
+    venues: []
+  }
+
   componentDidMount() {
     this.renderMap()
     this.getVenues()
@@ -11,6 +15,7 @@ class App extends Component {
 
   getVenues = () => {
     const venuesURL = 'https://api.foursquare.com/v2/venues/explore?client_id=3DTFRRBJ2R33GOU1XLL1EIXSYASEF3MSVDAACVHOHLN4U4LV&client_secret=CXVCVX0JTCD1VLNVPP1TQ3L1UKDJVQB1L5ANDRASIRPS2RYH&v=20180323&near=Chicago,IL&query=food';
+
 
     axios.get(venuesURL)
       .then(res => {
