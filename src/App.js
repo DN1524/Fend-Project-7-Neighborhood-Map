@@ -19,7 +19,9 @@ class App extends Component {
 
     axios.get(venuesURL)
       .then(res => {
-        console.log(res);
+        console.log(res.data.response.groups[0].items);
+        this.setState({venues: res.data.response.groups[0].items})
+        console.log(this.state.venues[0].venue.location);
       })
       .catch(err => {
         console.log(err);
