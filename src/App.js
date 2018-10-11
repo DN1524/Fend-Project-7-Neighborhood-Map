@@ -9,7 +9,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.renderMap()
     this.getVenues()
   }
 
@@ -19,9 +18,7 @@ class App extends Component {
 
     axios.get(venuesURL)
       .then(res => {
-        console.log(res.data.response.groups[0].items);
-        this.setState({venues: res.data.response.groups[0].items})
-        console.log(this.state.venues[0].venue.location);
+        this.setState({venues: res.data.response.groups[0].items}, this.renderMap())
       })
       .catch(err => {
         console.log(err);
@@ -33,6 +30,7 @@ class App extends Component {
       center: {lat: 41.878114, lng: -87.629798},
       zoom: 10
     });
+
   }
 
   renderMap = () => {
