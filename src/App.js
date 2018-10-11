@@ -31,6 +31,20 @@ class App extends Component {
       zoom: 10
     });
 
+    let venues = this.state.venues
+
+    venues.map(ven => {
+      const venueAttr = ven.venue
+      const lat = venueAttr.location.lat;
+      const lng = venueAttr.location.lng;
+      const title = venueAttr.name;
+      
+      const marker = new window.google.maps.Marker({
+        position: {lat: lat, lng: lng},
+        map: map,
+        title: title
+      })
+    })
   }
 
   renderMap = () => {
