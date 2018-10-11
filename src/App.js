@@ -19,6 +19,7 @@ class App extends Component {
     axios.get(venuesURL)
       .then(res => {
         this.setState({venues: res.data.response.groups[0].items}, this.renderMap())
+        console.log(res.data.response.groups[0].items)
       })
       .catch(err => {
         console.log(err);
@@ -37,13 +38,24 @@ class App extends Component {
       const venueAttr = ven.venue
       const lat = venueAttr.location.lat;
       const lng = venueAttr.location.lng;
+      const address = venueAttr.location.address
       const title = venueAttr.name;
       
       const marker = new window.google.maps.Marker({
         position: {lat: lat, lng: lng},
         map: map,
-        title: title
+        title: title,
+        animation: window.google.maps.Animation.DROP
       })
+
+      const infowindow = new window.google.maps.InfoWindow({
+        content: address
+      });
+
+      marker.addListener("click", () => {
+        infowindow.open(map, marker);
+      })
+
     })
   }
 
