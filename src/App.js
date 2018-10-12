@@ -46,15 +46,14 @@ class App extends Component {
         map: map,
         title: title,
         animation: window.google.maps.Animation.DROP
-      })
-
-      const infowindow = new window.google.maps.InfoWindow({
-        content: address
       });
+
+      const infowindow = new window.google.maps.InfoWindow();
 
       marker.addListener("click", () => {
         infowindow.open(map, marker);
-      })
+        infowindow.setContent(address);
+      });
 
       
     })
