@@ -29,7 +29,7 @@ class App extends Component {
   initMap = () => {
     const map = new window.google.maps.Map(document.getElementById("map"), {
       center: {lat: 41.878114, lng: -87.629798},
-      zoom: 10
+      zoom: 11
     });
 
     let venues = this.state.venues
@@ -56,6 +56,7 @@ class App extends Component {
         infowindow.open(map, marker);
       })
 
+      
     })
   }
 
