@@ -5,8 +5,7 @@ import axios from "axios";
 
 class App extends Component {
   state = {
-    venues: [],
-    markers: []
+    venues: []
   }
 
   componentDidMount() {
@@ -55,8 +54,6 @@ class App extends Component {
         infowindow.open(map, marker);
         infowindow.setContent(address);
       });
-
-      
     })
   }
 
