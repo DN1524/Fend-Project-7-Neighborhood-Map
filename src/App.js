@@ -33,6 +33,7 @@ class App extends Component {
     });
 
     let venues = this.state.venues
+    const infowindow = new window.google.maps.InfoWindow();
 
     venues.map(ven => {
       const venueAttr = ven.venue
@@ -48,11 +49,9 @@ class App extends Component {
         animation: window.google.maps.Animation.DROP
       });
 
-      const infowindow = new window.google.maps.InfoWindow();
-
       marker.addListener("click", () => {
-        infowindow.open(map, marker);
         infowindow.setContent(address);
+        infowindow.open(map, marker);
       });
     })
   }
