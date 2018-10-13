@@ -39,9 +39,16 @@ class App extends Component {
       const venueAttr = ven.venue
       const lat = venueAttr.location.lat;
       const lng = venueAttr.location.lng;
-      const address = venueAttr.location.address
+      const address = venueAttr.location.formattedAddress;
       const title = venueAttr.name;
       
+      const contentString = `
+      <p style="font-weight: bold; margin: 0; font-size: 14px;">${title}<p>
+      <p style="margin: 0;">${venueAttr.location.address}</p>
+      <p style="margin: 0;">${address[1]}</p>
+      <p style="margin: 0;">${address[2]}</p>
+      `
+      console.log(venueAttr.location.formattedAddress);
       const marker = new window.google.maps.Marker({
         position: {lat: lat, lng: lng},
         map: map,
@@ -50,7 +57,7 @@ class App extends Component {
       });
 
       marker.addListener("click", () => {
-        infowindow.setContent(address);
+        infowindow.setContent(contentString);
         infowindow.open(map, marker);
       });
     })
