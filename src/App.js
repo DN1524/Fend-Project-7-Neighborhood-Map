@@ -48,7 +48,7 @@ class App extends Component {
       <p style="margin: 0;">${address[1]}</p>
       <p style="margin: 0;">${address[2]}</p>
       `
-      console.log(venueAttr.location.formattedAddress);
+      // console.log(venueAttr.location.formattedAddress);
       const marker = new window.google.maps.Marker({
         position: {lat: lat, lng: lng},
         map: map,
@@ -73,7 +73,7 @@ class App extends Component {
       <main>
         <div id="map"></div>
 
-        <NavBar />
+        <NavBar results={this.state.venues}/>
       </main>
     );
   }
