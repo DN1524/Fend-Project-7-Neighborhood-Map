@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MapContainer from "./Map";
+import Results from "./Results";
 
 class SideBar extends Component  {
 	render() {
@@ -10,9 +11,7 @@ class SideBar extends Component  {
 	      	</input>
 	      	<div className="results-container">
 						<ul className="list-results">
-							<li>Some Text</li>
-							<li>Some Text</li>
-							<li>Some Text</li>
+							<Results results={this.props.results}/>
 						</ul>
 					</div>
 				</section>
