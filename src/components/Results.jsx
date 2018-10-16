@@ -39,7 +39,3 @@ class Results extends Component {
 }
 
 export default Results;
-
-// {setTimeout(() => {
-// 	console.log(this.props.results[0].venue.name)
-// },1000)}
