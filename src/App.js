@@ -19,7 +19,7 @@ class App extends Component {
     axios.get(venuesURL)
       .then(res => {
         this.setState({venues: res.data.response.groups[0].items}, this.renderMap())
-        console.log(res.data.response.groups[0].items)
+        // console.log(res.data.response.groups[0].items)
       })
       .catch(err => {
         console.log(err);
@@ -64,7 +64,7 @@ class App extends Component {
   }
 
   renderMap = () => {
-    loadScript("https:maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=&v=3&callback=initMap")
+    loadScript("https:maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=AIzaSyDqxmYDgJSpgCG4GCvkQCwTGre0Ve49HAE&v=3&callback=initMap")
     window.initMap = this.initMap
   }
 
