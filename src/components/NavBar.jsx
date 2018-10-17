@@ -30,7 +30,10 @@ class NavBar extends Component  {
 						/>
 					</div>
 				</nav>
-				<SideBar state={this.state} results={this.props.results}/>
+				<SideBar 
+					state={this.state} 
+					results={this.props.results} 
+				/>
 			</div>
 		)
 	}
