@@ -10,7 +10,7 @@ class SideBar extends Component  {
 	      	</input>
 	      	<div className="results-container">
 						<ul className="list-results">
-							<Results results={this.props.results}/>
+							<Results />
 						</ul>
 					</div>
 				</section>
