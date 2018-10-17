@@ -12,7 +12,7 @@ class SideBar extends Component  {
 						<ul className="list-results">
 							{this.props.results.length > 0 ? 
 								this.props.results.map((res) => 
-									<Results key={res.venue.name}/>) : 
+									<Results key={res.venue.name} results={this.props.results} />) : 
 									<p className="no-results">No results available</p>
 							}
 						</ul>
