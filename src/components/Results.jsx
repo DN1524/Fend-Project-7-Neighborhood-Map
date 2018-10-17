@@ -16,7 +16,7 @@ class Results extends Component {
     axios.get(venuesURL)
       .then(res => {
         this.setState({results: res.data.response.groups[0].items})
-        console.log(res.data.response.groups[0].items, "Updated State!!")
+        // console.log(res.data.response.groups[0].items, "Updated State!!")
       })
       .catch(err => {
         console.log("An error has occur!: " + err);
