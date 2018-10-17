@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import Results from "./Results";
 
 class SideBar extends Component  {
-	state = {
-		results: []
-	}
-	
 	render() {
 		return(
 			<div className="sidebar-container">
