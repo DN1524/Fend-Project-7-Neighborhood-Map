@@ -64,7 +64,7 @@ class App extends Component {
   }
 
   renderMap = () => {
-    loadScript("https:maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=AIzaSyDqxmYDgJSpgCG4GCvkQCwTGre0Ve49HAE&v=3&callback=initMap")
+    loadScript("https:maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=&v=3&callback=initMap")
     window.initMap = this.initMap
   }
 
@@ -72,8 +72,8 @@ class App extends Component {
     return (
       <main>
         <div id="map"></div>
-
-        <NavBar results={this.state.venues}/>
+        
+        <NavBar results={this.state.venues} />
       </main>
     );
   }
