@@ -10,8 +10,11 @@ class SideBar extends Component  {
 	      	</input>
 	      	<div className="results-container">
 						<ul className="list-results">
-						{this.props.results.length > 0 ? this.props.results.map((res) => <Results key={res.venue.name}/>) : console.log("nothing!")}
-						
+							{this.props.results.length > 0 ? 
+								this.props.results.map((res) => 
+									<Results key={res.venue.name}/>) : 
+									<p className="no-results">No results available</p>
+							}
 						</ul>
 					</div>
 				</section>
