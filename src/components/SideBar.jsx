@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import Results from "./Results";
 
 class SideBar extends Component  {
+	state = {
+		query: ""
+	}
+
+
 	render() {
 		return(
 			<div className="sidebar-container">
