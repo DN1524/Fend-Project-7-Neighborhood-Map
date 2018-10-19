@@ -6,18 +6,22 @@ class SideBar extends Component  {
 		query: ""
 	}
 
+	updateQuery = (query) => {
+		this.setState ({ query: query })
+		console.log(this.state.query);
+	}
 
 	render() {
 		return(
 			<div className="sidebar-container">
 				<section className="sidebar">
-					<input className="text-box" type="text" placeholder="Search">
+					<input className="text-box" type="text" placeholder="Search" onChange={e => this.updateQuery(e.target.value)}>
 	      	</input>
 	      	<div className="results-container">
 						<ul className="list-results">
 						{this.props.results.length > 0 ? 
 							this.props.results.map((res) => 
-								<li>
+								<li key={res.venue.name}>
 									<p className="res-title">{res.venue.name}</p>
 						  		<p className="res-address">{res.venue.location.address}</p>
 						  		<p className="res-address">{res.venue.location.formattedAddress[1]}</p>
