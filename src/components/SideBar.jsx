@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Results from "./Results";
+import axios from "axios";
 
 class SideBar extends Component  {
 	state = {
@@ -8,8 +9,21 @@ class SideBar extends Component  {
 
 	updateQuery = (query) => {
 		this.setState ({ query: query })
-		console.log(this.state.query);
+
 	}
+
+	 getVenues = () => {
+    const venuesURL = 'https://api.foursquare.com/v2/venues/explore?client_id=3DTFRRBJ2R33GOU1XLL1EIXSYASEF3MSVDAACVHOHLN4U4LV&client_secret=CXVCVX0JTCD1VLNVPP1TQ3L1UKDJVQB1L5ANDRASIRPS2RYH&v=20180323&near=Chicago,IL&query=food';
+
+    axios.get(venuesURL)
+      .then(res => {
+        this.props.updateVenues(res.data.response.groups[0].items)
+        console.log("Retrieving Venues...");
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
 
 	render() {
 		return(
