@@ -83,7 +83,7 @@ class App extends Component {
       <main>
         <div id="map"></div>
         
-        <NavBar results={this.state.venues} />
+        <NavBar results={this.state.venues} updateVenues={this.updateVenues} />
       </main>
     );
   }
