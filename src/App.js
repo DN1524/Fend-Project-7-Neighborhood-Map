@@ -28,7 +28,7 @@ class App extends Component {
 
     axios.get(venuesURL)
       .then(res => {
-        this.setState({venues: res.data.response.groups[0].items}, this.renderMap())
+        this.updateVenues(res.data.response.groups[0].items, this.renderMap())
         // console.log(res.data.response.groups[0].items)
       })
       .catch(err => {
