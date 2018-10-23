@@ -25,6 +25,21 @@ class SideBar extends Component  {
       })
   }
 
+	filterSearch = () => {
+		const query = this.state.query;
+
+		if(query === "" || query === undefined) {
+			this.getVenues()
+		}	else {
+			// this.props.updateVenues( [] )
+			console.log("Here are the venues...")
+
+		}
+		document.querySelectorAll("li").forEach(function(item) {
+			console.log(item.innerText);
+		});
+	}
+
 	render() {
 		return(
 			<div className="sidebar-container">
