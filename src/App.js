@@ -9,6 +9,7 @@ class App extends Component {
     this.state = {
       venues: []
     }
+    this.updateVenues = this.updateVenues.bind(this);
   }
 
   updateVenues = (e) => {
