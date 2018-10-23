@@ -4,8 +4,11 @@ import NavBar from "./components/NavBar";
 import axios from "axios";
 
 class App extends Component {
-  state = {
-    venues: []
+  constructor(props) {
+    super(props)
+    this.state = {
+      venues: []
+    }
   }
 
   componentDidMount() {
