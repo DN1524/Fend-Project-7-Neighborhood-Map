@@ -8,7 +8,7 @@ class SideBar extends Component  {
 	}
 
 	updateQuery = (query) => {
-		this.setState ({ query: query })
+		this.setState ({ query: query }, this.filterSearch)
 
 	}
 
