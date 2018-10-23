@@ -15,7 +15,10 @@ class SideBar extends Component  {
 		return(
 			<div className="sidebar-container">
 				<section className="sidebar">
-					<input className="text-box" type="text" placeholder="Search" onChange={e => this.updateQuery(e.target.value)}>
+					<input 
+						className="text-box" 
+						type="text" placeholder="Search" 
+						onChange={e => this.updateQuery(e.target.value)}>
 	      	</input>
 	      	<div className="results-container">
 						<ul className="list-results">
