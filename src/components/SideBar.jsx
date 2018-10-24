@@ -8,7 +8,7 @@ class SideBar extends Component  {
 	}
 
 	updateQuery = (query) => {
-		this.setState ({ query: query }, this.filterSearch)
+		this.setState ({ query: query })
 
 	}
 
@@ -28,21 +28,6 @@ class SideBar extends Component  {
         console.log(err);
       })
   }
-
-	filterSearch = () => {
-		const query = this.state.query;
-
-		if(query === "" || query === undefined) {
-			this.getVenues()
-		}	else {
-			// this.props.updateVenues( [] )
-			console.log("Here are the venues...")
-		}
-
-		document.querySelectorAll("li").forEach(function(item) {
-			console.log(item.innerText);
-		});
-	}
 
 	render() {
 		return(
