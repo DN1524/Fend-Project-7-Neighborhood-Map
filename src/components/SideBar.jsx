@@ -17,8 +17,12 @@ class SideBar extends Component  {
 
     axios.get(venuesURL)
       .then(res => {
-        this.props.updateVenues(res.data.response.groups[0].items)
-        console.log("Retrieving Venues...");
+      	if(this.props.results.length <= 0)  {
+	        this.props.updateVenues(res.data.response.groups[0].items)
+	        console.log("Retrieving Venues...");
+				} else {
+					console.log("There are already venues!");
+				}
       })
       .catch(err => {
         console.log(err);
@@ -33,8 +37,8 @@ class SideBar extends Component  {
 		}	else {
 			// this.props.updateVenues( [] )
 			console.log("Here are the venues...")
-
 		}
+
 		document.querySelectorAll("li").forEach(function(item) {
 			console.log(item.innerText);
 		});
