@@ -21,6 +21,9 @@ class SideBar extends Component  {
 	}
 
 	render() {
+		const query = this.state.query;
+		const results = this.props.results;
+
 		return(
 			<div className="sidebar-container">
 				<section className="sidebar">
@@ -32,8 +35,8 @@ class SideBar extends Component  {
 	      	</input>
 	      	<div className="results-container">
 						<ul className="list-results">
-						{this.props.results.length > 0 ? 
-							this.props.results.map((res) => 
+						{results.length > 0 ? 
+							results.filter(filterSearch(query)).map((res) => 
 								<li key={res.venue.name}>
 									<p className="res-title">{res.venue.name}</p>
 						  		<p className="res-address">{res.venue.location.address}</p>
