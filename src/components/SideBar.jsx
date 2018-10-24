@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Results from "./Results";
-import axios from "axios";
 
 class SideBar extends Component  {
 	state = {
