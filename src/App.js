@@ -85,7 +85,11 @@ class App extends Component {
       <main>
         <div id="map"></div>
         
-        <NavBar results={this.state.venues} updateVenues={this.updateVenues} />
+        <NavBar
+          results={this.state.venues}
+          markers={this.state.markers}
+          updateVenues={this.updateVenues}
+        />
       </main>
     );
   }
