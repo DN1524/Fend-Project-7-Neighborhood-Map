@@ -33,6 +33,7 @@ class NavBar extends Component  {
 				<SideBar 
 					state={this.state} 
 					results={this.props.results} 
+					markers={this.state.markers}
 					updateVenues={this.props.updateVenues}
 				/>
 			</div>
