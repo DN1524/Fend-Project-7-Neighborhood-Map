@@ -37,7 +37,7 @@ class SideBar extends Component  {
 						<ul className="list-results">
 						{results.length > 0 ? 
 							results.filter(filterSearch(query)).map((res) => 
-								<li key={res.venue.name}>
+								<li key={res.venue.id}>
 									<p className="res-title">{res.venue.name}</p>
 						  		<p className="res-address">{res.venue.location.address}</p>
 						  		<p className="res-address">{res.venue.location.formattedAddress[1]}</p>
@@ -46,7 +46,7 @@ class SideBar extends Component  {
 				  		) : <p className="no-results">No results available</p>
 						}
 						</ul>
-
+						
 					</div>
 				</section>
 			</div>
