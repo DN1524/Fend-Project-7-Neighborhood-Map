@@ -7,7 +7,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      venues: []
+      venues: [],
+      markers: []
     }
     this.updateVenues = this.updateVenues.bind(this);
   }
@@ -64,6 +65,8 @@ class App extends Component {
         title: title,
         animation: window.google.maps.Animation.DROP
       });
+
+      this.setState({ markers: marker });
 
       marker.addListener("click", () => {
         infowindow.setContent(contentString);
