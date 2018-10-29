@@ -8,7 +8,8 @@ class App extends Component {
     super(props)
     this.state = {
       venues: [],
-      markers: []
+      markers: [],
+      query: ""
     }
     this.updateVenues = this.updateVenues.bind(this);
   }
