@@ -84,8 +84,8 @@ class App extends Component {
     return (
       <main>
         <div id="map"></div>
-        
         <NavBar
+          ref={(child) => {this.NavBar = child}}
           results={this.state.venues}
           markers={this.state.markers}
           updateVenues={this.updateVenues}
