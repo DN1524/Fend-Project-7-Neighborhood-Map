@@ -36,7 +36,7 @@ class SideBar extends Component  {
 	      	<div className="results-container">
 						<ul className="list-results">
 						{results.length > 0 ? 
-							results.filter(filterSearch(query)).map((res) => 
+							results.filter(this.props.filterSearch(query)).map((res) => 
 								<li key={res.venue.id}>
 									<p className="res-title">{res.venue.name}</p>
 						  		<p className="res-address">{res.venue.location.address}</p>
