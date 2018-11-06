@@ -82,7 +82,6 @@ class App extends Component {
           ref={(child) => {this.NavBar = child}}
           results={this.state.venues}
           markers={this.state.markers}
-          updateVenues={this.updateVenues}
         />
       </main>
     );
