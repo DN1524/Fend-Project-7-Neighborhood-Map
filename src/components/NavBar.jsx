@@ -7,6 +7,7 @@ class NavBar extends Component  {
 	state = {
     open: true
   }
+
   // syncs the boolean of this.state and the burgerMenu.
   handleClick = () => {
   	this.setState({open: this.state.open ? false : true})
@@ -16,6 +17,7 @@ class NavBar extends Component  {
   		$(".sidebar").addClass("hidden");
   	}
   }
+
 	render() {
 		return(
 			<div className="ui-container">
@@ -31,11 +33,17 @@ class NavBar extends Component  {
 					</div>
 				</nav>
 				<SideBar 
+					ref={(child) => {this.SideBar = child}}
 					state={this.state} 
 					results={this.props.results} 
-					markers={this.state.markers}
-					updateVenues={this.props.updateVenues}
-				/>
+					markers={this.props.markers}
+					// updateVenues={this.props.updateVenues}
+					filterVenues={this.props.filterVenues}
+					listsID={this.props.listsID}
+					filteredVenues={this.props.filteredVenues}
+					map={this.props.map}
+          infoWindow={this.props.infoWindow}
+				/>	
 			</div>
 		)
 	}
