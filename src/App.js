@@ -12,11 +12,6 @@ class App extends Component {
     }
   }
 
-  updateVenues = (e) => {
-    // e.preventDefault();
-    this.setState({ venues: e })
-  }
-
   componentDidMount() {
     this.getVenues()
   }
