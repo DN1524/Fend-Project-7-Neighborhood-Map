@@ -16,6 +16,15 @@ class App extends Component {
     this.getVenues()
   }
 
+  filterSearch = (query) => {
+  return function(x) {
+    return x.venue.name.toLowerCase().includes(query.toLowerCase()) ||
+    x.venue.location.address.toLowerCase().includes(query.toLowerCase()) ||
+    x.venue.location.formattedAddress[1].toLowerCase().includes(query.toLowerCase())
+     || !query;
+    }
+  }
+
   getVenues = () => {
     const venuesURL = 'https://api.foursquare.com/v2/venues/explore?client_id=3DTFRRBJ2R33GOU1XLL1EIXSYASEF3MSVDAACVHOHLN4U4LV&client_secret=CXVCVX0JTCD1VLNVPP1TQ3L1UKDJVQB1L5ANDRASIRPS2RYH&v=20180323&near=Chicago,IL&query=food';
 
@@ -82,6 +91,7 @@ class App extends Component {
           ref={(child) => {this.NavBar = child}}
           results={this.state.venues}
           markers={this.state.markers}
+          filterSearch={this.filterSearch}
         />
       </main>
     );
