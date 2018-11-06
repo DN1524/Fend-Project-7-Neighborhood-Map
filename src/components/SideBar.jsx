@@ -1,15 +1,6 @@
 import React, { Component } from 'react';
 import Results from "./Results";
 
-function filterSearch(query) {
-	return function(x) {
-		return x.venue.name.toLowerCase().includes(query.toLowerCase()) ||
-		x.venue.location.address.toLowerCase().includes(query.toLowerCase()) ||
-		x.venue.location.formattedAddress[1].toLowerCase().includes(query.toLowerCase())
-		 || !query;
-	}
-}
-
 class SideBar extends Component  {
 	state = {
 		query: ""
