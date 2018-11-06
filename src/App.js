@@ -10,7 +10,6 @@ class App extends Component {
       venues: [],
       markers: []
     }
-    this.updateVenues = this.updateVenues.bind(this);
   }
 
   updateVenues = (e) => {
