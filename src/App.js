@@ -36,7 +36,7 @@ class App extends Component {
       || !query)
   }
 
-  updateQuery = () => {
+  updateQuery = (query) => {
     this.setState({ filteredVenues: this.filterVenues(this.state.venues, query) })
   }
 
