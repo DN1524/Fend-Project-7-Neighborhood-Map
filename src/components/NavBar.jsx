@@ -35,6 +35,7 @@ class NavBar extends Component  {
 					results={this.props.results} 
 					markers={this.state.markers}
 					filterSearch={this.props.filterSearch}
+					filerVenues={this.props.updateQuery}
 				/>
 			</div>
 		)
