@@ -94,6 +94,13 @@ class App extends Component {
           markers={this.state.markers}
           filterSearch={this.filterSearch}
         />
+
+        {this.state.venues.length > 0 ?
+          <MapContainer
+          venues={this.state.venues}
+          />
+          : console.log("Wating on venues")
+        }
       </main>
     );
   }
