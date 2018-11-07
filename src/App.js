@@ -16,6 +16,7 @@ class App extends Component {
 
   componentDidMount() {
     this.getVenues()
+    this.setState({ filteredVenues: this.filterVenues(this.state.venues, "") })
   }
 
   filterSearch = (query) => {
