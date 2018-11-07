@@ -19,12 +19,20 @@ class App extends Component {
   }
 
   filterSearch = (query) => {
-  return function(x) {
+  return (x) => {
     return x.venue.name.toLowerCase().includes(query.toLowerCase()) ||
     x.venue.location.address.toLowerCase().includes(query.toLowerCase()) ||
     x.venue.location.formattedAddress[1].toLowerCase().includes(query.toLowerCase())
      || !query;
     }
+  }
+
+  filterVenues = (venues, query) => {
+    return venues.filter(venue =>
+      venue.venue.name.toLowerCase().includes(query.toLowerCase()) ||
+      venue.venue.location.address.toLowerCase().includes(query.toLowerCase()) ||
+      venue.venue.location.formattedAddress[1].toLowerCase().includes(query.toLowerCase())
+      || !query)
   }
 
   getVenues = () => {
