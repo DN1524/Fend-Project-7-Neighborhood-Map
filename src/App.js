@@ -62,7 +62,8 @@ class App extends Component {
           results={this.state.venues}
           markers={this.state.markers}
           filterSearch={this.filterSearch}
-          filerVenues={this.updateQuery}
+          filterVenues={this.updateQuery}
+          filteredVenues={this.state.filteredVenues}
         />
 
         {this.state.venues.length > 0 ?
