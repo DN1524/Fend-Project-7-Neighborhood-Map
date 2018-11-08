@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import NavBar from "./components/NavBar";
 import axios from "axios";
-import MapContainer from "./components/Map"
 
 class App extends Component {
   constructor(props) {
