@@ -10,19 +10,18 @@ class App extends Component {
     this.state = {
       venues: [], // Venues without infoWindow and markers
       newVenues: [], // Venues with infoWindow and markers
-      filteredVenues: [],
+      filteredVenues: [], // Venues being filtered
       query: ""   
     }
   }
 
   componentDidMount() {
     this.getVenues()
-    // this.setState({ filteredVenues: this.filterVenues(this.state.venues, "") })
   }
 
   updateQuery = (query) => {
     this.setState ({ query: query })
-
+    // Filters both venue results and markers
     const filteredVenues = this.state.newVenues.filter(venue => {
       if (venue.venue.name.toLowerCase().includes(query.toLowerCase()) ||
           venue.venue.location.address.toLowerCase().includes(query.toLowerCase()) ||
@@ -50,6 +49,7 @@ class App extends Component {
   //   }
   // }
 
+  // Grabs URL for the Google map
   renderMap = () => {
     loadScript("https:maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=&v=3&callback=initMap")
     window.initMap = this.initMap
@@ -85,7 +85,7 @@ class App extends Component {
         id: venueAttr.id,
         animation: window.google.maps.Animation.DROP
       });
-
+      // Allows access to the markers through the venues
       ven.marker = marker
 
       // markerArray.push(marker)
@@ -94,6 +94,7 @@ class App extends Component {
 
       let infowindow = new window.google.maps.InfoWindow();
       infowindow.setContent(contentString);
+      // Allows access to the infoWindows through the venues
       ven.infowindow = infowindow
 
       marker.addListener("click", () => {
@@ -110,7 +111,8 @@ class App extends Component {
   handleClick = (infowindow, map, marker) => {
     const venues = this.state.newVenues
 
-    //closes previous infoWindow when new marker is selected.
+    //closes previous infoWindow and stops 
+    //marker animation when new marker is selected.
     venues.forEach(ven => {
       ven.infowindow.close()
       ven.marker.setAnimation(null);
@@ -120,10 +122,9 @@ class App extends Component {
     marker.setAnimation(window.google.maps.Animation.BOUNCE);
 
   }
-
+  // Fetches venues from FourSqaure with Axios
   getVenues = () => {
     const venuesURL = 'https://api.foursquare.com/v2/venues/explore?client_id=3DTFRRBJ2R33GOU1XLL1EIXSYASEF3MSVDAACVHOHLN4U4LV&client_secret=CXVCVX0JTCD1VLNVPP1TQ3L1UKDJVQB1L5ANDRASIRPS2RYH&v=20180323&near=Chicago,IL&query=food';
-
 
     axios.get(venuesURL)
       .then(res => {
@@ -151,7 +152,8 @@ class App extends Component {
     );
   }
 }
-
+// Allows access to use Google Maps such as the map
+// itself, makers, and infoWindows
 function loadScript(url) {
   const index = window.document.getElementsByTagName("script")[0];
   const script = window.document.createElement("script");
