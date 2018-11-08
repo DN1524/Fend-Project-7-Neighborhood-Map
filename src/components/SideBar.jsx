@@ -8,11 +8,12 @@ class SideBar extends Component  {
 
 	updateQuery = (query) => {
 		this.setState ({ query: query })
-
+		this.props.filterVenues(query)
+		console.log(this.props.filteredVenues)
 	}
 
 	render() {
-		const query = this.state.query;
+		const query = this.props.query;
 		const results = this.props.results;
 
 		return(
@@ -22,13 +23,14 @@ class SideBar extends Component  {
 						className="text-box" 
 						type="text" 
 						placeholder="Search" 
-						onChange={e => this.updateQuery(e.target.value)}>
+						onChange={e => this.props.updateQuery(e.target.value)}>
 	      	</input>
 	      	<div className="results-container">
 						<ul className="list-results">
 						{results.length > 0 ? 
-							results.filter(this.props.filterSearch(query)).map((res) => 
-								<li key={res.venue.id}>
+							results.map((res, key) => 
+							// this.props.filteredVenues && this.props.filteredVenues.map((res, key) =>
+								<li key={key} onClick={() => {this.props.handleClick(res.infowindow, res.marker.map, res.marker)}}>
 									<p className="res-title">{res.venue.name}</p>
 						  		<p className="res-address">{res.venue.location.address}</p>
 						  		<p className="res-address">{res.venue.location.formattedAddress[1]}</p>
