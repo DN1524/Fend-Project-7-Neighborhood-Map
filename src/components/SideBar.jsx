@@ -17,6 +17,7 @@ class SideBar extends Component  {
 	      	</input>
 	      	<div className="results-container">
 						<ul className="list-results">
+						{/* Loads list items when the venues finally load */}
 						{results.length > 0 ? 
 							results.map((res, key) => 
 								<li key={key} onClick={() => {this.props.handleClick(res.infowindow, res.marker.map, res.marker)}}>
@@ -25,6 +26,8 @@ class SideBar extends Component  {
 						  		<p className="res-address">{res.venue.location.formattedAddress[1]}</p>
 						  		<p className="res-address">{res.venue.location.formattedAddress[2]}</p> 
 				  			</li>
+				  			// If no venues are available, then a message of
+				  			// "No results available" will display
 				  		) : <p className="no-results">No results available</p>
 						}
 						</ul>
