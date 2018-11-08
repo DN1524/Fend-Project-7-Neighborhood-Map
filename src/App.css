@@ -71,6 +71,7 @@ body {
   margin-bottom: 3px;
   color: #A3A3A3FF;
   background: #2B2B2BFF;
+  cursor: pointer;
 }
 
 #map {
