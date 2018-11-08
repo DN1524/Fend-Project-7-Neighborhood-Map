@@ -2,16 +2,6 @@ import React, { Component } from 'react';
 import Results from "./Results";
 
 class SideBar extends Component  {
-	state = {
-		query: ""
-	}
-
-	updateQuery = (query) => {
-		this.setState ({ query: query })
-		this.props.filterVenues(query)
-		console.log(this.props.filteredVenues)
-	}
-
 	render() {
 		const query = this.props.query;
 		const results = this.props.results;
@@ -29,7 +19,6 @@ class SideBar extends Component  {
 						<ul className="list-results">
 						{results.length > 0 ? 
 							results.map((res, key) => 
-							// this.props.filteredVenues && this.props.filteredVenues.map((res, key) =>
 								<li key={key} onClick={() => {this.props.handleClick(res.infowindow, res.marker.map, res.marker)}}>
 									<p className="res-title">{res.venue.name}</p>
 						  		<p className="res-address">{res.venue.location.address}</p>
