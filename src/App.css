@@ -14,7 +14,6 @@ body {
 }
 
 .navbar {
-  /*border: solid 3px red;*/
   position: absolute;
   padding-bottom: 5px;
   background: #808080FF;
@@ -70,11 +69,20 @@ body {
 
 .list-results li {
   padding-left: 0.5em;
-  margin-bottom: 3px;
-  color: #A3A3A3FF;
+  margin-bottom: 8px;
+  color: #B7B7B7FF;
   background: #2B2B2BFF;
   cursor: pointer;
 }
+
+.list-results li:hover {
+  background: black;
+  color: #B2D2E5;
+}
+
+/*.list-results li p:hover {*/
+/*  color: #D21426FF;
+}*/
 
 #map {
   bottom:0px;
