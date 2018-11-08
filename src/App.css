@@ -17,7 +17,7 @@ body {
   position: absolute;
   padding-bottom: 5px;
   background:  #2B2B2BFF;
-  border-top: solid #808080FF;
+  border-bottom: solid #808080FF;
   font-size: 25px;
   width: 100%;
   max-width: 100%;
