@@ -8,36 +8,117 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      venues: [],
-      markers: [],
-      filteredVenues: []
+      venues: [], // Venues without infoWindow and markers
+      newVenues: [], // Venues with infoWindow and markers
+      filteredVenues: [],
+      query: ""   
     }
   }
 
   componentDidMount() {
     this.getVenues()
-    this.setState({ filteredVenues: this.filterVenues(this.state.venues, "") })
-  }
-
-  filterSearch = (query) => {
-  return (x) => {
-    return x.venue.name.toLowerCase().includes(query.toLowerCase()) ||
-    x.venue.location.address.toLowerCase().includes(query.toLowerCase()) ||
-    x.venue.location.formattedAddress[1].toLowerCase().includes(query.toLowerCase())
-     || !query;
-    }
-  }
-
-  filterVenues = (venues, query) => {
-    return venues.filter(venue =>
-      venue.venue.name.toLowerCase().includes(query.toLowerCase()) ||
-      venue.venue.location.address.toLowerCase().includes(query.toLowerCase()) ||
-      venue.venue.location.formattedAddress[1].toLowerCase().includes(query.toLowerCase())
-      || !query)
+    // this.setState({ filteredVenues: this.filterVenues(this.state.venues, "") })
   }
 
   updateQuery = (query) => {
-    this.setState({ filteredVenues: this.filterVenues(this.state.venues, query) })
+    this.setState ({ query: query })
+
+    const filteredVenues = this.state.newVenues.filter(venue => {
+      if (venue.venue.name.toLowerCase().includes(query.toLowerCase()) ||
+          venue.venue.location.address.toLowerCase().includes(query.toLowerCase()) ||
+          venue.venue.location.formattedAddress[1].toLowerCase().includes(query.toLowerCase()) ||
+          !query) {
+
+        venue.marker.setVisible(true);
+        return venue
+
+      } else {
+        venue.marker.setVisible(false);
+        venue.infowindow.close()
+      }
+    })
+
+    this.setState({ filteredVenues })
+  }
+
+  // filterSearch = (query) => {
+  //   return (x) => {
+  //     return x.venue.name.toLowerCase().includes(query.toLowerCase()) ||
+  //     x.venue.location.address.toLowerCase().includes(query.toLowerCase()) ||
+  //     x.venue.location.formattedAddress[1].toLowerCase().includes(query.toLowerCase())
+  //     || !query;
+  //   }
+  // }
+
+  renderMap = () => {
+    loadScript("https:maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=&v=3&callback=initMap")
+    window.initMap = this.initMap
+  }
+
+  initMap = () => {
+    const map = new window.google.maps.Map(document.getElementById("map"), {
+      center: {lat: 41.878114, lng: -87.629798},
+      zoom: 11
+    });
+
+    // let markerArray = []
+    let venues = this.state.venues
+    // const infowindow = new window.google.maps.InfoWindow();
+
+    let venueMapInfo = venues.map(ven => {
+      const venueAttr = ven.venue
+      const lat = venueAttr.location.lat;
+      const lng = venueAttr.location.lng;
+      const address = venueAttr.location.formattedAddress;
+      const title = venueAttr.name;
+      
+      const contentString = `
+      <p style="font-weight: bold; margin: 0; font-size: 14px;">${title}<p>
+      <p style="margin: 0;">${venueAttr.location.address}</p>
+      <p style="margin: 0;">${address[1]}</p>
+      <p style="margin: 0;">${address[2]}</p>
+      `
+      // console.log(venueAttr.location.formattedAddress);
+      const marker = new window.google.maps.Marker({
+        position: {lat: lat, lng: lng},
+        map: map,
+        title: title,
+        animation: window.google.maps.Animation.DROP
+      });
+
+      ven.marker = marker
+
+      // markerArray.push(marker)
+
+      // this.setState({ markers: markerArray });
+
+      let infowindow = new window.google.maps.InfoWindow();
+      infowindow.setContent(contentString);
+      ven.infowindow = infowindow
+
+      marker.addListener("click", () => {
+        // console.log(this.state.newVenues)
+        this.handleClick(infowindow, map, marker)
+      });
+
+      return ven
+    })
+    this.setState({ newVenues: venueMapInfo, filteredVenues: venueMapInfo })
+    console.log(this.state.filteredVenues)
+  }
+
+  handleClick = (infowindow, map, marker) => {
+    const venues = this.state.newVenues
+
+    //closes previous infoWindow when new marker is selected.
+    venues.forEach(ven => {
+      ven.infowindow.close()
+      ven.marker.setAnimation(null);
+    })
+
+    infowindow.open(map, marker)
+    marker.setAnimation(window.google.maps.Animation.BOUNCE);
+
   }
 
   getVenues = () => {
@@ -46,7 +127,7 @@ class App extends Component {
 
     axios.get(venuesURL)
       .then(res => {
-        this.setState({ venues: res.data.response.groups[0].items })
+        this.setState({ venues: res.data.response.groups[0].items }, this.renderMap())
         // console.log(res.data.response.groups[0].items)
       })
       .catch(err => {
@@ -57,24 +138,27 @@ class App extends Component {
   render() {
     return (
       <main>
+        <div id="map"></div>
         <NavBar
-          ref={(child) => {this.NavBar = child}}
-          results={this.state.venues}
-          markers={this.state.markers}
           filterSearch={this.filterSearch}
-          filterVenues={this.updateQuery}
-          filteredVenues={this.state.filteredVenues}
+          results={this.state.filteredVenues}
+          markers={this.state.markers}
+          updateQuery={this.updateQuery}
+          query={this.state.query}
+          handleClick={this.handleClick}
         />
-
-        {this.state.venues.length > 0 ?
-          <MapContainer
-          venues={this.state.venues}
-          />
-          : console.log("Wating on venues")
-        }
       </main>
     );
   }
+}
+
+function loadScript(url) {
+  const index = window.document.getElementsByTagName("script")[0];
+  const script = window.document.createElement("script");
+  script.src = url;
+  script.async = true;
+  script.defer = true;
+  index.parentNode.insertBefore(script, index);
 }
 
 export default App;
