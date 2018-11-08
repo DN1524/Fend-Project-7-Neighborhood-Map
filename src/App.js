@@ -40,15 +40,6 @@ class App extends Component {
     this.setState({ filteredVenues })
   }
 
-  // filterSearch = (query) => {
-  //   return (x) => {
-  //     return x.venue.name.toLowerCase().includes(query.toLowerCase()) ||
-  //     x.venue.location.address.toLowerCase().includes(query.toLowerCase()) ||
-  //     x.venue.location.formattedAddress[1].toLowerCase().includes(query.toLowerCase())
-  //     || !query;
-  //   }
-  // }
-
   // Grabs URL for the Google map
   renderMap = () => {
     loadScript("https:maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=&v=3&callback=initMap")
@@ -61,9 +52,7 @@ class App extends Component {
       zoom: 11
     });
 
-    // let markerArray = []
     let venues = this.state.venues
-    // const infowindow = new window.google.maps.InfoWindow();
 
     let venueMapInfo = venues.map(ven => {
       const venueAttr = ven.venue
@@ -88,17 +77,12 @@ class App extends Component {
       // Allows access to the markers through the venues
       ven.marker = marker
 
-      // markerArray.push(marker)
-
-      // this.setState({ markers: markerArray });
-
       let infowindow = new window.google.maps.InfoWindow();
       infowindow.setContent(contentString);
       // Allows access to the infoWindows through the venues
       ven.infowindow = infowindow
 
       marker.addListener("click", () => {
-        // console.log(this.state.newVenues)
         this.handleClick(infowindow, map, marker)
       });
 
@@ -129,7 +113,6 @@ class App extends Component {
     axios.get(venuesURL)
       .then(res => {
         this.setState({ venues: res.data.response.groups[0].items }, this.renderMap())
-        // console.log(res.data.response.groups[0].items)
       })
       .catch(err => {
         console.log(err);
