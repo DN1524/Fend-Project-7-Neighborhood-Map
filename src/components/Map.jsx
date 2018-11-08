@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 
 export class MapContainer extends Component  {
 	state = {
-		markers: []
+		newVenues: [],
+		markers: [],
+		filteredMarkers: []
 	}
 
 	componentDidMount() {
@@ -21,11 +23,11 @@ export class MapContainer extends Component  {
       zoom: 11
     });
 
-    let markerArray = []
+    // let markerArray = []
     let venues = this.props.venues
-    const infowindow = new window.google.maps.InfoWindow();
+    // const infowindow = new window.google.maps.InfoWindow();
 
-    venues.map(ven => {
+    let venueMapInfo = venues.map(ven => {
       const venueAttr = ven.venue
       const lat = venueAttr.location.lat;
       const lng = venueAttr.location.lng;
@@ -46,16 +48,23 @@ export class MapContainer extends Component  {
         animation: window.google.maps.Animation.DROP
       });
 
-      markerArray.push(marker)
+      ven.marker = marker
 
-      this.setState({ markers: markerArray });
+      // markerArray.push(marker)
+
+      // this.setState({ markers: markerArray });
+
+      let infowindow = new window.google.maps.InfoWindow();
+      infowindow.setContent(contentString);
+      ven.infowindow = infowindow
 
       marker.addListener("click", () => {
-        infowindow.setContent(contentString);
         infowindow.open(map, marker);
       });
+
+      return ven
     })
-    console.log(this.state.markers)
+    this.setState({ newVenues: venueMapInfo })
   }
 
 	render() {
