@@ -31,12 +31,13 @@ class NavBar extends Component  {
 					</div>
 				</nav>
 				<SideBar 
-					state={this.state} 
+					state={this.state}
+					filterSearch={this.props.filterSearch}
+					updateQuery={this.props.updateQuery}
+					handleClick={this.props.handleClick}
 					results={this.props.results} 
 					markers={this.state.markers}
-					filterSearch={this.props.filterSearch}
-					filterVenues={this.props.updateQuery}
-					filteredVenues={this.props.filteredVenues}
+					query={this.props.query}
 				/>
 			</div>
 		)
