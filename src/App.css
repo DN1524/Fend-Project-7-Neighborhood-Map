@@ -51,6 +51,7 @@ body {
 
 .sidebar {
   position: absolute;
+  border-right: solid #808080FF;
   margin-top: 5em;
   width: 351px;
   max-width: 100%;
