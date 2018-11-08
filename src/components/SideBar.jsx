@@ -20,7 +20,7 @@ class SideBar extends Component  {
 						{/* Loads list items when the venues finally load */}
 						{results.length > 0 ? 
 							results.map((res, key) => 
-								<li key={key} onClick={() => {this.props.handleClick(res.infowindow, res.marker.map, res.marker)}}>
+								<li key={key} tabindex="0" onClick={() => {this.props.handleClick(res.infowindow, res.marker.map, res.marker)}}>
 									<p className="res-title">{res.venue.name}</p>
 						  		<p className="res-address">{res.venue.location.address}</p>
 						  		<p className="res-address">{res.venue.location.formattedAddress[1]}</p>
