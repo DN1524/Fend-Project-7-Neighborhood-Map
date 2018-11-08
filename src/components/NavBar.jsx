@@ -20,7 +20,7 @@ class NavBar extends Component  {
 		return(
 			<div className="ui-container">
 				<nav className="navbar">
-					<h1>PlaceHolder</h1>
+					<h1>Chicago Restaurants</h1>
 					<div className="hamburger-container">
 						<HamburgerMenu
 							isOpen={this.state.open}
