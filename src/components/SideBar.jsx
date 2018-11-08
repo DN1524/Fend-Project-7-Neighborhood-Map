@@ -8,7 +8,6 @@ class SideBar extends Component  {
 
 		return(
 			<div className="sidebar-container">
-				{/*console.log("SideBar is rendering...", this.props.results)*/}
 				<section className="sidebar">
 					<input 
 						className="text-box" 
