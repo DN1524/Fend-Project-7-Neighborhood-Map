@@ -27,6 +27,7 @@ class NavBar extends Component  {
 							menuClicked={this.handleClick.bind(this)}
 							strokeWidth={4}
 							height={22}
+							color={"#B7B7B7FF"}
 						/>
 					</div>
 				</nav>
