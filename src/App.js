@@ -74,12 +74,12 @@ class App extends Component {
         id: venueAttr.id,
         animation: window.google.maps.Animation.DROP
       });
-      // Allows access to the markers through the venues
+      // Allows access to the markers through the NewVenues state
       ven.marker = marker
 
       let infowindow = new window.google.maps.InfoWindow();
       infowindow.setContent(contentString);
-      // Allows access to the infoWindows through the venues
+      // Allows access to the infoWindows through the NewVenues state
       ven.infowindow = infowindow
 
       marker.addListener("click", () => {
