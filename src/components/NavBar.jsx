@@ -22,28 +22,26 @@ class NavBar extends Component  {
 		return(
 			<div className="ui-container">
 				<nav className="navbar">
-					<h1>PlaceHolder</h1>
+					<h1>Chicago Restaurants</h1>
 					<div className="hamburger-container">
 						<HamburgerMenu
 							isOpen={this.state.open}
 							menuClicked={this.handleClick.bind(this)}
 							strokeWidth={4}
 							height={22}
+							color={"#B7B7B7FF"}
 						/>
 					</div>
 				</nav>
 				<SideBar 
-					ref={(child) => {this.SideBar = child}}
-					state={this.state} 
+					state={this.state}
+					filterSearch={this.props.filterSearch}
+					updateQuery={this.props.updateQuery}
+					handleClick={this.props.handleClick}
 					results={this.props.results} 
-					markers={this.props.markers}
-					// updateVenues={this.props.updateVenues}
-					filterVenues={this.props.filterVenues}
-					listsID={this.props.listsID}
-					filteredVenues={this.props.filteredVenues}
-					map={this.props.map}
-          infoWindow={this.props.infoWindow}
-				/>	
+					markers={this.state.markers}
+					query={this.props.query}
+				/>
 			</div>
 		)
 	}

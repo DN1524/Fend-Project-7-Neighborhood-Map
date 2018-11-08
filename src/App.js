@@ -2,60 +2,58 @@ import React, { Component } from 'react';
 import './App.css';
 import NavBar from "./components/NavBar";
 import axios from "axios";
+import MapContainer from "./components/Map"
 
 class App extends Component {
-    state = {
-      venues: [], // DO NOT CHANGE THIS STATE WHEN FILLED WITH VENUES!!!
+  constructor(props) {
+    super(props)
+    this.state = {
+      venues: [], // Venues without infoWindow and markers
+      newVenues: [], // Venues with infoWindow and markers
       filteredVenues: [],
-      markers: [],
-      markersID: [],
-      listsID: [],
-      map: {},
-      infoWindow: {}
-    }
-
-  componentWillMount() {
-    this.getVenues();
-    console.log("TESTING....")
-  }
-
-  filterSearch = (query) => {
-  return (x) => {
-    return x.venue.name.toLowerCase().includes(query.toLowerCase()) ||
-    x.venue.location.address.toLowerCase().includes(query.toLowerCase()) ||
-    x.venue.location.formattedAddress[1].toLowerCase().includes(query.toLowerCase())
-     || !query;
+      query: ""   
     }
   }
 
-  getVenues = () => {
-    const venuesURL = 'https://api.foursquare.com/v2/venues/explore?client_id=3DTFRRBJ2R33GOU1XLL1EIXSYASEF3MSVDAACVHOHLN4U4LV&client_secret=CXVCVX0JTCD1VLNVPP1TQ3L1UKDJVQB1L5ANDRASIRPS2RYH&v=20180323&near=Chicago,IL&query=food';
-
-    axios.get(venuesURL)
-      .then(res => {
-        this.setState({ venues: res.data.response.groups[0].items }, this.renderMap())
-        // console.log(res.data.response.groups[0].items)
-      })
-      .catch(err => {
-        console.log(err);
-      })
+  componentDidMount() {
+    this.getVenues()
+    // this.setState({ filteredVenues: this.filterVenues(this.state.venues, "") })
   }
 
-  // updateMarkers = () => {
-  //   if(this.state.markers.length !== filteredVenues.length) {
-  //     this.state.markers.forEach(marker => {
-  //       marker.setMap(null);
-  //       infowindow.close();
-  //       console.log("Close Marker")
-  //     })
-        
-  //   } else {
-  //     this.state.markers.forEach(marker => {
-  //       marker.setMap(map)
-  //     })
-  //     console.log("Open marker?")
+  updateQuery = (query) => {
+    this.setState ({ query: query })
+
+    const filteredVenues = this.state.newVenues.filter(venue => {
+      if (venue.venue.name.toLowerCase().includes(query.toLowerCase()) ||
+          venue.venue.location.address.toLowerCase().includes(query.toLowerCase()) ||
+          venue.venue.location.formattedAddress[1].toLowerCase().includes(query.toLowerCase()) ||
+          !query) {
+
+        venue.marker.setVisible(true);
+        return venue
+
+      } else {
+        venue.marker.setVisible(false);
+        venue.infowindow.close()
+      }
+    })
+
+    this.setState({ filteredVenues })
+  }
+
+  // filterSearch = (query) => {
+  //   return (x) => {
+  //     return x.venue.name.toLowerCase().includes(query.toLowerCase()) ||
+  //     x.venue.location.address.toLowerCase().includes(query.toLowerCase()) ||
+  //     x.venue.location.formattedAddress[1].toLowerCase().includes(query.toLowerCase())
+  //     || !query;
   //   }
   // }
+
+  renderMap = () => {
+    loadScript("https:maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=&v=3&callback=initMap")
+    window.initMap = this.initMap
+  }
 
   initMap = () => {
     const map = new window.google.maps.Map(document.getElementById("map"), {
@@ -63,18 +61,11 @@ class App extends Component {
       zoom: 11
     });
 
-    this.setState({ map: map })
-
-    console.log(this.state.map, "1")
-    console.log(map, "2")
-
-    const infowindow = new window.google.maps.InfoWindow();
-    // const query = this.NavBar.SideBar.state.query; // Component Refs
-    // const filteredVenues = this.NavBar.SideBar.state.filteredVenues; // Component Refs
+    // let markerArray = []
     let venues = this.state.venues
-    let markers = [];
+    // const infowindow = new window.google.maps.InfoWindow();
 
-    venues.map((ven, id) => {
+    let venueMapInfo = venues.map(ven => {
       const venueAttr = ven.venue
       const lat = venueAttr.location.lat;
       const lng = venueAttr.location.lng;
@@ -87,49 +78,75 @@ class App extends Component {
       <p style="margin: 0;">${address[2]}</p>
       `
 
-      let marker = new window.google.maps.Marker({
+      const marker = new window.google.maps.Marker({
         position: {lat: lat, lng: lng},
         map: map,
         title: title,
         id: venueAttr.id,
         animation: window.google.maps.Animation.DROP
-      })
-
-      // console.log(ven)
-
-      markers.push(marker);
-
-      marker.addListener("click", () => {
-        infowindow.setContent(contentString);
-        infowindow.open(map, marker);
-        console.log(infowindow);
       });
 
-      this.setState({ infoWindow: infowindow })
-      this.setState({ markers: markers })
+      ven.marker = marker
+
+      // markerArray.push(marker)
+
+      // this.setState({ markers: markerArray });
+
+      let infowindow = new window.google.maps.InfoWindow();
+      infowindow.setContent(contentString);
+      ven.infowindow = infowindow
+
+      marker.addListener("click", () => {
+        // console.log(this.state.newVenues)
+        this.handleClick(infowindow, map, marker)
+      });
+
+      return ven
     })
+    this.setState({ newVenues: venueMapInfo, filteredVenues: venueMapInfo })
+    console.log(this.state.filteredVenues)
   }
 
-  renderMap = () => {
-    loadScript("https:maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=&v=3&callback=initMap")
-    window.initMap = this.initMap
+  handleClick = (infowindow, map, marker) => {
+    const venues = this.state.newVenues
+
+    //closes previous infoWindow when new marker is selected.
+    venues.forEach(ven => {
+      ven.infowindow.close()
+      ven.marker.setAnimation(null);
+    })
+
+    infowindow.open(map, marker)
+    marker.setAnimation(window.google.maps.Animation.BOUNCE);
+
+  }
+
+  getVenues = () => {
+    const venuesURL = 'https://api.foursquare.com/v2/venues/explore?client_id=3DTFRRBJ2R33GOU1XLL1EIXSYASEF3MSVDAACVHOHLN4U4LV&client_secret=CXVCVX0JTCD1VLNVPP1TQ3L1UKDJVQB1L5ANDRASIRPS2RYH&v=20180323&near=Chicago,IL&query=food';
+
+
+    axios.get(venuesURL)
+      .then(res => {
+        this.setState({ venues: res.data.response.groups[0].items }, this.renderMap())
+        // console.log(res.data.response.groups[0].items)
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   render() {
     return (
       <main>
         <div id="map"></div>
-        {this.state.venues.length > 0 && this.state.markers.length ?
-          <NavBar
-            ref={(child) => {this.NavBar = child}}
-            results={this.state.venues}
-            markers={this.state.markers}
-            listsID={this.state.listsID}
-            filteredVenues={this.state.filteredVenues}
-            map={this.state.map}
-            infoWindow={this.state.infoWindow}
-          /> : console.log("Retreiving venues & markers...")
-        }
+        <NavBar
+          filterSearch={this.filterSearch}
+          results={this.state.filteredVenues}
+          markers={this.state.markers}
+          updateQuery={this.updateQuery}
+          query={this.state.query}
+          handleClick={this.handleClick}
+        />
       </main>
     );
   }
