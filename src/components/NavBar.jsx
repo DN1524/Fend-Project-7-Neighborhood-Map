@@ -12,10 +12,10 @@ class NavBar extends Component  {
   	this.setState({open: this.state.open ? false : true})
   	if (this.state.open === false) {
   		$(".sidebar").removeClass("hidden");
-  		$("#map").css("width", "75.1%");
+  		// $("#map").css("width", "75.1%");
   	} else {
   		$(".sidebar").addClass("hidden");
-  		$("#map").css("width", "100%");
+  		// $("#map").css("width", "100%");
   	}
   }
 
