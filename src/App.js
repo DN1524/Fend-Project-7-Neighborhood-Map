@@ -35,7 +35,6 @@ class App extends Component {
         venue.infowindow.close()
       }
     })
-
     this.setState({ filteredVenues })
   }
 
@@ -95,6 +94,11 @@ class App extends Component {
         this.handleClick(infowindow, map, marker)
       });
 
+      // Stops marker animation when "X" is clicked in the infoWindow
+      window.google.maps.event.addListener(infowindow, "closeclick", () => {
+        ven.marker.setAnimation(null);
+      })
+
       return ven
     })
     this.setState({ newVenues: venueMapInfo, filteredVenues: venueMapInfo })
@@ -113,7 +117,6 @@ class App extends Component {
 
     infowindow.open(map, marker)
     marker.setAnimation(window.google.maps.Animation.BOUNCE);
-
   }
   // Fetches venues from FourSqaure with Axios
   getVenues = () => {
