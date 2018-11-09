@@ -59,11 +59,21 @@ class App extends Component {
       const lng = venueAttr.location.lng;
       const address = venueAttr.location.formattedAddress;
       const title = venueAttr.name;
+      const restaurantType = venueAttr.categories[0].name
+      let deliveryLink;
+
+      if (venueAttr.delivery === undefined) {
+        deliveryLink = `<span>No delivery link available</span>`;
+      } else {
+        deliveryLink = `<a href=${venueAttr.delivery.url}>Link to delivery page</a>`;
+      }
+
       const contentString = `
-      <p style="font-weight: bold; margin: 0; font-size: 14px;">${title}<p>
+      <h2 style="margin: 0; font-size: 14px;">${title}</h2>
+      <p style="margin: 0; font-size: 14px; text-decoration: underline;">${restaurantType}</p>
       <p style="margin: 0;">${venueAttr.location.address}</p>
       <p style="margin: 0;">${address[1]}</p>
-      <p style="margin: 0;">${address[2]}</p>
+      ${deliveryLink}
       `
 
       const marker = new window.google.maps.Marker({
