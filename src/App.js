@@ -124,7 +124,7 @@ class App extends Component {
         this.setState({ venues: res.data.response.groups[0].items }, this.renderMap())
       })
       .catch(err => {
-        console.log(err);
+        alert("Failed to load maps or venues " + err)
       })
   }
 
