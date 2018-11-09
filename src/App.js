@@ -65,7 +65,7 @@ class App extends Component {
       if (venueAttr.delivery === undefined) {
         deliveryLink = `<span>No delivery link available</span>`;
       } else {
-        deliveryLink = `<a href=${venueAttr.delivery.url}>Link to delivery page</a>`;
+        deliveryLink = `<a href=${venueAttr.delivery.url}>Link to GrubHub delivery page</a>`;
       }
 
       const contentString = `
