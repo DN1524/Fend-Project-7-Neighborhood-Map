@@ -131,7 +131,7 @@ class App extends Component {
   render() {
     return (
       <main>
-        <div id="map"></div>
+        <div id="map" role="application" aria-label="Map of Chicago restaurants"></div>
         <NavBar
           filterSearch={this.filterSearch}
           results={this.state.filteredVenues}
