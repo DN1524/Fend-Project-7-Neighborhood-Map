@@ -24,7 +24,7 @@ class NavBar extends Component  {
 			<div className="ui-container">
 				<nav className="navbar">
 					<h1 tabIndex="0">Chicago Restaurants</h1>
-					<button className="hamburger-container" tabIndex="0" onClick={this.handleClick}>
+					<button className="hamburger-container" tabIndex="0" aria-label="Toggle side menu" onClick={this.handleClick}>
 						<HamburgerMenu
 							isOpen={this.state.open}
 							menuClicked={this.handleClick.bind(this)}
