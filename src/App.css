@@ -125,3 +125,11 @@ body {
   font-size: 24px;
   text-align: center;
 }
+
+.navbar h1:focus, .hamburger-container:focus {
+  box-shadow: 5px 3px orange;
+}
+
+.text-box:focus, .venue-button:focus {
+  border: solid 3px orange;
+}
