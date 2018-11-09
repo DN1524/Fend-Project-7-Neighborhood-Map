@@ -96,7 +96,7 @@ class App extends Component {
 
       // Stops marker animation when "X" is clicked in the infoWindow
       window.google.maps.event.addListener(infowindow, "closeclick", () => {
-        ven.marker.setAnimation(null);
+        marker.setAnimation(null);
       })
 
       return ven
