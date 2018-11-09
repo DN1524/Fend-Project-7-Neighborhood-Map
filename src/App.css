@@ -82,6 +82,13 @@ body {
   color: #B2D2E5;
 }
 
+.venue-button {
+  text-align: left;
+  width: 100%;
+  border: none;
+  background: none;
+}
+
 /*.list-results li p:hover {*/
 /*  color: #D21426FF;
 }*/
