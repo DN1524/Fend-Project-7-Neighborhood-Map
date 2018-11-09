@@ -19,18 +19,28 @@ class SideBar extends Component  {
 						<ul className="list-results">
 						{/* Loads list items when the venues finally load */}
 						{results.length > 0 ? 
-							results.map((res, key) =>
-								<button className="venue-button" key={key} onClick={() => {this.props.handleClick(res.infowindow, res.marker.map, res.marker)}}>
-									<li key={key}>
-										<p className="res-title">{res.venue.name}</p>
-							  		<p className="res-address">{res.venue.location.address}</p>
-							  		<p className="res-address">{res.venue.location.formattedAddress[1]}</p>
-							  		<p className="res-address">{res.venue.location.formattedAddress[2]}</p> 
+							results.map((res, key) => {
+								const name = res.venue.name;
+								const map = res.marker.map;
+								const marker = res.marker
+								const infowindow = res.infowindow;
+								const address = res.venue.location.address;
+								const formattedAddress = res.venue.location.formattedAddress;
+								
+								return <button 
+								className="venue-button" 
+								key={key}
+								onClick={() => {this.props.handleClick(infowindow, map, marker)}}>
+									<li key={key} aria-label={res.venue.name + res.venue.location.address + res.venue.location.formattedAddress[1]}>
+										<p className="res-title">{name}</p>
+							  		<p className="res-address">{address}</p>
+							  		<p className="res-address">{formattedAddress[1]}</p>
+							  		<p className="res-address">{formattedAddress[2]}</p> 
 					  			</li>
 					  		</button>	
 				  			// If no venues are available, then a message of
 				  			// "No results available" will display
-				  		) : <p className="no-results">No results available</p>
+				  		}) : <p className="no-results">No results available</p>
 						}
 						</ul>
 					</div>
