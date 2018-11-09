@@ -31,7 +31,7 @@ class SideBar extends Component  {
 								className="venue-button" 
 								key={key}
 								onClick={() => {this.props.handleClick(infowindow, map, marker)}}>
-									<li key={key} aria-label={res.venue.name + res.venue.location.address + res.venue.location.formattedAddress[1]}>
+									<li key={key} aria-label={name + address + formattedAddress[1]}>
 										<p className="res-title">{name}</p>
 							  		<p className="res-address">{address}</p>
 							  		<p className="res-address">{formattedAddress[1]}</p>
