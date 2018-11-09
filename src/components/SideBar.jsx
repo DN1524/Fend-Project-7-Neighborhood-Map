@@ -10,8 +10,10 @@ class SideBar extends Component  {
 			<div className="sidebar-container">
 				<section className="sidebar">
 					<input 
-						className="text-box" 
+						className="text-box"
+						aria-label="Filter Chicago restaurants" 
 						type="text" 
+						value={query}
 						placeholder="Search" 
 						onChange={e => this.props.updateQuery(e.target.value)}>
 	      	</input>
