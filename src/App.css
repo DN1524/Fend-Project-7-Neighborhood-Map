@@ -37,9 +37,10 @@ body {
 }
 
 .hamburger-container {
-  width: 36px;
-  margin: 1.2em 1em 0 auto;
-  cursor: pointer;
+  background-color:  #2B2B2BFF;
+  margin: 1.5em;
+  float: right;
+  height: 3em;
 }
 
 .text-box {
