@@ -34,6 +34,7 @@ class App extends Component {
         venue.marker.setVisible(false);
         venue.infowindow.close()
       }
+      return filteredVenues
     })
     this.setState({ filteredVenues })
   }
