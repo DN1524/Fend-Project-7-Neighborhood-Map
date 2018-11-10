@@ -41,7 +41,7 @@ class App extends Component {
 
   // Grabs URL for the Google map
   renderMap = () => {
-    loadScript("https:maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=&v=3&callback=initMap")
+    loadScript("https:maps.googleapis.com/maps/api/js?libraries=places&key=(YOUR_API_KEY)&v=3&callback=initMap")
     window.initMap = this.initMap
   }
 
@@ -121,7 +121,7 @@ class App extends Component {
   }
   // Fetches venues from FourSqaure with Axios
   getVenues = () => {
-    const venuesURL = 'https://api.foursquare.com/v2/venues/explore?client_id=3DTFRRBJ2R33GOU1XLL1EIXSYASEF3MSVDAACVHOHLN4U4LV&client_secret=CXVCVX0JTCD1VLNVPP1TQ3L1UKDJVQB1L5ANDRASIRPS2RYH&v=20180323&near=Chicago,IL&query=food';
+    const venuesURL = 'https://api.foursquare.com/v2/venues/explore?client_id=(YOUR_CLIENT_ID)&client_secret=(YOUR_CLIENT_SECRET)&v=20180323&near=Chicago,IL&query=food';
 
     axios.get(venuesURL)
       .then(res => {
