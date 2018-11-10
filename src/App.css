@@ -9,10 +9,6 @@ body {
   padding: 0;
 }
 
-#root {
-  width: 100%;
-}
-
 .navbar {
   position: absolute;
   padding-bottom: 5px;
@@ -89,14 +85,10 @@ body {
   background: none;
 }
 
-/*.list-results li p:hover {*/
-/*  color: #D21426FF;
-}*/
-
 #map {
   bottom:0px;
-  height: 91.5%;
-  width: 100%;
+  height: 91.5vh;
+  width: 100vw;
   position: absolute;
   right: 0px;
 }
