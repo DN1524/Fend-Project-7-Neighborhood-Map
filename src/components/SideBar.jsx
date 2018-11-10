@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Results from "./Results";
 
 class SideBar extends Component  {
 	render() {
