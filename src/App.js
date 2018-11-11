@@ -3,6 +3,15 @@ import './App.css';
 import NavBar from "./components/NavBar";
 import axios from "axios";
 
+window.gm_authFailure = function() {
+   alert(`
+    Google Maps failed to load!
+    
+    You may have exceeded your Google Maps Api quota
+    or you are using an invalid API key.`);
+}
+
+
 class App extends Component {
   constructor(props) {
     super(props)
