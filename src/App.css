@@ -140,7 +140,7 @@ body {
 @media screen and (min-width: 420px) {
   .navbar h1 {
     padding: 20px 0 0 5px;
-    width: 80%;
+    width: 350px;
     font-size: 35px;
   }
 }
