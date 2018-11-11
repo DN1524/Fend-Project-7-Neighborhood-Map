@@ -137,7 +137,7 @@ class App extends Component {
         this.setState({ venues: res.data.response.groups[0].items }, this.renderMap())
       })
       .catch(err => {
-        alert("Failed to load maps or venues " + err)
+        alert("Failed to load venues " + err)
       })
   }
 
