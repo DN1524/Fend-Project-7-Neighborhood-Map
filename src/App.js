@@ -3,6 +3,14 @@ import './App.css';
 import NavBar from "./components/NavBar";
 import axios from "axios";
 
+window.gm_authFailure = function() {
+   alert(`
+    Google Maps failed to load!
+    
+    You may have exceeded your Google Maps Api quota
+    or you are using an invalid API key.`);
+}
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -41,7 +49,7 @@ class App extends Component {
 
   // Grabs URL for the Google map
   renderMap = () => {
-    loadScript("https:maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=&v=3&callback=initMap")
+    loadScript("https:maps.googleapis.com/maps/api/js?libraries=places&key=&v=3&callback=initMap")
     window.initMap = this.initMap
   }
 
@@ -128,7 +136,7 @@ class App extends Component {
         this.setState({ venues: res.data.response.groups[0].items }, this.renderMap())
       })
       .catch(err => {
-        alert("Failed to load maps or venues " + err)
+        alert("Failed to load maps " + err)
       })
   }
 
