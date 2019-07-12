@@ -11,6 +11,10 @@ window.gm_authFailure = function() {
     or you are using an invalid API key.`);
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> af4d4d3658229795bce963a97b1edae4153aa9b4
 class App extends Component {
   constructor(props) {
     super(props)
@@ -49,7 +53,11 @@ class App extends Component {
 
   // Grabs URL for the Google map
   renderMap = () => {
+<<<<<<< HEAD
     loadScript("https:maps.googleapis.com/maps/api/js?libraries=places&key=&v=3&callback=initMap")
+=======
+    loadScript("https:maps.googleapis.com/maps/api/js?libraries=places&key=(YOUR_API_KEY)&v=3&callback=initMap")
+>>>>>>> af4d4d3658229795bce963a97b1edae4153aa9b4
     window.initMap = this.initMap
   }
 
@@ -129,14 +137,18 @@ class App extends Component {
   }
   // Fetches venues from FourSqaure with Axios
   getVenues = () => {
-    const venuesURL = 'https://api.foursquare.com/v2/venues/explore?client_id=3DTFRRBJ2R33GOU1XLL1EIXSYASEF3MSVDAACVHOHLN4U4LV&client_secret=CXVCVX0JTCD1VLNVPP1TQ3L1UKDJVQB1L5ANDRASIRPS2RYH&v=20180323&near=Chicago,IL&query=food';
+    const venuesURL = 'https://api.foursquare.com/v2/venues/explore?client_id=(YOUR_CLIENT_ID)&client_secret=(YOUR_CLIENT_SECRET)&v=20180323&near=Chicago,IL&query=food';
 
     axios.get(venuesURL)
       .then(res => {
         this.setState({ venues: res.data.response.groups[0].items }, this.renderMap())
       })
       .catch(err => {
+<<<<<<< HEAD
         alert("Failed to load maps " + err)
+=======
+        alert("Failed to load venues " + err)
+>>>>>>> af4d4d3658229795bce963a97b1edae4153aa9b4
       })
   }
 
