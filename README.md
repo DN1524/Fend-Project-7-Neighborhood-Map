@@ -10,7 +10,7 @@ To get started:
 * install all project dependencies with `npm install`
 * start the server with `npm start`
 
-Note: You will have to have your own Google Map Api key and FourSquere API keys for this project have the map and venues function. To do so, got to App.js under the src folder and go to line 44 to enter a new Google Map API key and line 124 to add new FourSquare Client_ID and Secret API codes.
+Note: You will have to have your own Google Map Api key and FourSquere API keys for this project to have the map and venues function. To do so, got to App.js under the src folder and go to line 44 to enter a new Google Map API key and line 124 to add new FourSquare Client_ID and Secret API codes.
 
 ## Service Worker
 
